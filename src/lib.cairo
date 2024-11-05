@@ -1,15 +1,28 @@
+#[cfg(feature: 'feature_change_my_name')]
 mod air;
+#[cfg(feature: 'feature_change_my_name')]
 mod channel;
+#[cfg(feature: 'feature_change_my_name')]
 mod common;
+#[cfg(feature: 'feature_change_my_name')]
 mod deserialization;
+#[cfg(feature: 'feature_change_my_name')]
 mod domains;
+#[cfg(feature: 'feature_change_my_name')]
 mod fri;
+#[cfg(feature: 'feature_change_my_name')]
 mod oods;
+#[cfg(feature: 'feature_change_my_name')]
 mod proof_of_work;
+#[cfg(feature: 'feature_change_my_name')]
 mod queries;
+#[cfg(feature: 'feature_change_my_name')]
 mod stark;
+#[cfg(feature: 'feature_change_my_name')]
 mod table_commitment;
+#[cfg(feature: 'feature_change_my_name')]
 mod vector_commitment;
+
 mod settings;
 mod contracts;
 
@@ -18,28 +31,42 @@ mod benches;
 #[cfg(feature: 'recursive')]
 mod tests;
 
-use cairo_verifier::{
+#[cfg(feature: 'feature_change_my_name')]
+use integrity::{
     deserialization::stark::StarkProofWithSerde, stark::{StarkProof, StarkProofImpl},
-    settings::{VerifierSettings, CairoVersion},
 };
+#[cfg(feature: 'feature_change_my_name')]
 use starknet::contract_address::ContractAddressZero;
 
+// re-export
+use integrity::{
+    contracts::fact_registry_interface::{
+        IFactRegistry, IFactRegistryDispatcher, IFactRegistryDispatcherTrait
+    },
+    settings::{
+        FactHash, VerificationHash, PresetHash, SecurityBits, JobId, CairoVersion, HasherBitLength,
+        StoneVersion, VerifierSettings, VerifierPreset, VerifierConfiguration, split_settings
+    },
+};
+
 #[cfg(feature: 'dex')]
-use cairo_verifier::air::layouts::dex::public_input::DexPublicInputImpl as PublicInputImpl;
+use integrity::air::layouts::dex::public_input::DexPublicInputImpl as PublicInputImpl;
 #[cfg(feature: 'recursive')]
-use cairo_verifier::air::layouts::recursive::public_input::RecursivePublicInputImpl as PublicInputImpl;
+use integrity::air::layouts::recursive::public_input::RecursivePublicInputImpl as PublicInputImpl;
 #[cfg(feature: 'recursive_with_poseidon')]
-use cairo_verifier::air::layouts::recursive_with_poseidon::public_input::RecursiveWithPoseidonPublicInputImpl as PublicInputImpl;
+use integrity::air::layouts::recursive_with_poseidon::public_input::RecursiveWithPoseidonPublicInputImpl as PublicInputImpl;
 #[cfg(feature: 'small')]
-use cairo_verifier::air::layouts::small::public_input::SmallPublicInputImpl as PublicInputImpl;
+use integrity::air::layouts::small::public_input::SmallPublicInputImpl as PublicInputImpl;
 #[cfg(feature: 'starknet')]
-use cairo_verifier::air::layouts::starknet::public_input::StarknetPublicInputImpl as PublicInputImpl;
+use integrity::air::layouts::starknet::public_input::StarknetPublicInputImpl as PublicInputImpl;
 #[cfg(feature: 'starknet_with_keccak')]
-use cairo_verifier::air::layouts::starknet_with_keccak::public_input::StarknetWithKeccakPublicInputImpl as PublicInputImpl;
+use integrity::air::layouts::starknet_with_keccak::public_input::StarknetWithKeccakPublicInputImpl as PublicInputImpl;
 
 
+#[cfg(feature: 'feature_change_my_name')]
 const SECURITY_BITS: u32 = 50;
 
+#[cfg(feature: 'feature_change_my_name')]
 #[cfg(feature: 'monolith')]
 fn main(mut serialized: Span<felt252>, settings: @VerifierSettings) -> (felt252, felt252) {
     let stark_proof_serde = Serde::<StarkProofWithSerde>::deserialize(ref serialized).unwrap();
