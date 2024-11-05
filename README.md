@@ -178,3 +178,4 @@ After proof is verified, `FactRegistered` event is emitted which contains `fact_
 FactRegistry contract is trustless which means that the owner of the contract can't override or change any existing behavior, they can only add new verifiers. Proxy contract on the other hand is upgradable, so every function can be changed or removed. It has the advantage of having all future updates of the verifier logic without having to replace the address of FactRegistry contract.
 
 TODO: how to read FactRegistered event
+
